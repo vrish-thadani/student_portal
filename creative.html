@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative College Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #fdfdfd;
+      --text-color: #222;
+      --primary: #4f46e5;
+      --accent: #a78bfa;
+      --nav-bg: #ede9fe;
+      --highlight-bg: #f3f4f6;
+      --schedule-bg: #e0f2fe;
+      --schedule-border: #38bdf8;
+      --footer-bg: #f1f5f9;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f3f3f3;
+      --primary: #8b5cf6;
+      --accent: #c084fc;
+      --nav-bg: #1f1b2e;
+      --highlight-bg: #1e1e2f;
+      --schedule-bg: #2a2a3d;
+      --schedule-border: #818cf8;
+      --footer-bg: #1a1a27;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+    }
+
+    nav {
+      background-color: var(--nav-bg);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: 0.3s;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 2rem 1.5rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .highlight-box {
+      background-color: var(--highlight-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .schedule {
+      background-color: var(--schedule-bg);
+      border-left: 6px solid var(--schedule-border);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .schedule:hover {
+      transform: scale(1.02);
+    }
+
+    h1, h2 {
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--primary);
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      margin: -1.5rem 0 1.5rem 0;
+    }
+
+    .toggle-container button {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-container button:hover {
+      background-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My student life portal</h1>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#routine">My Day</a>
+    <a href="#tips">Study Tips</a>
+    <a href="#reminders">Reminders</a>
+  </nav>
+
+  <section id="routine">
+    <div class="toggle-container">
+      <button onclick="toggleMode()">Toggle Dark/Light Mode</button>
+    </div>
+    <div class="highlight-box">
+      <h2>Today’s Schedule</h2>
+      <div class="schedule"><h4>8:00 AM - Morning Routine</h4><p>Stretch, hydrate, and prepare for a focused day.</p></div>
+      <div class="schedule"><h4>10:00 AM - College lectures start</h4></div>
+      <div class="schedule"><h4>1:00 PM - Lunch & Recharge</h4><p>Catch up with friends or enjoy.</p></div>
+      <div class="schedule"><h4>5:15 PM - Lectures end and then I study for 1 hour</h4><p>Library deep focus session for upcoming exams.</p></div>
+      <div class="schedule"><h4>7:00 PM - Gym time and cardio</h4></div>
+      <div class="schedule"><h4>9:00 PM - Dinner</h4></div>
+      <div class="schedule"><h4>10:00 PM - Chill & Review</h4><p>Light reading, journaling, or a calming walk before bed.</p></div>
+      <div class="schedule"><h4>11:30 PM - Bedtime</h4></div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="highlight-box">
+      <h2>Study Tips</h2>
+      <ul>
+        <li>Break tasks into 25-minute sprints with 5-minute breaks.</li>
+        <li>Use Notion, ChatGPT, and Google Keep to track assignments and tasks.</li>
+        <li>Summarize lessons at the end of each day in your own words.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reminders">
+    <div class="highlight-box">
+      <h2>Reminders</h2>
+      <ul>
+        <li>✅ Submit DBMS Assignment</li>
+        <li>📊 Java Project Draft due Thursday</li>
+        <li>📚 Reserve study room for group on Friday</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    &copy; Student life portal
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    }
+  </script>
+
+</body>
+</html> 
